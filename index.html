@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubham | Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Shubham – Diploma Student & Developer building cool projects with passion." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Matter.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <!-- Typed.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+</head>
+
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Three.js BG -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Physics canvas -->
+  <canvas id="physicsCanvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">SHUBHAM</span>
+      <span class="logo-bracket">/&gt;</span>
+    </div>
+    <ul class="nav-tabs">
+      <li class="nav-item active" data-tab="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+        <div class="nav-underline"></div>
+      </li>
+      <li class="nav-item" data-tab="projects">
+        <span class="nav-icon">🚀</span>
+        <span class="nav-label">Projects</span>
+        <div class="nav-underline"></div>
+      </li>
+      <li class="nav-item" data-tab="skills">
+        <span class="nav-icon">⚡</span>
+        <span class="nav-label">Skills</span>
+        <div class="nav-underline"></div>
+      </li>
+      <li class="nav-item" data-tab="about">
+        <span class="nav-icon">🎓</span>
+        <span class="nav-label">About</span>
+        <div class="nav-underline"></div>
+      </li>
+      <li class="nav-item" data-tab="contact">
+        <span class="nav-icon">📡</span>
+        <span class="nav-label">Contact</span>
+        <div class="nav-underline"></div>
+      </li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      <span>Available for Work</span>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- ===== HOME TAB ===== -->
+    <section class="tab-section active" id="tab-home">
+      <div class="hero-container">
+        <div class="hero-left">
+          <div class="badge-row">
+            <span class="badge">🎓 Diploma Student</span>
+            <span class="badge pulse">💻 CSE</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-line">Hello, I'm</span>
+            <span class="title-name glitch" data-text="SHUBHAM">SHUBHAM</span>
+            <span class="title-sub">
+              I <span id="typed-text"></span>
+            </span>
+          </h1>
+          <p class="hero-desc">
+            A diploma student turning caffeine into code. I build things that
+            <span class="highlight">actually work</span> and look insane doing it.
+            Physics? Animations? I eat those for breakfast. 🍜
+          </p>
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="switchTab('projects')">
+              <span>View Projects</span>
+              <div class="btn-glow"></div>
+            </button>
+            <button class="btn-secondary" onclick="switchTab('contact')">
+              <span>Let's Talk</span>
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-num" data-count="15">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-count="5">0</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-count="100">0</span>
+              <span class="stat-label">% Passion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="avatar-container">
+            <div class="avatar-ring ring-1"></div>
+            <div class="avatar-ring ring-2"></div>
+            <div class="avatar-ring ring-3"></div>
+            <div class="avatar-hex">
+              <div class="hex-inner">
+                <span class="avatar-emoji">👨‍💻</span>
+              </div>
+            </div>
+            <!-- Floating tech chips -->
+            <div class="float-chip chip-1">HTML</div>
+            <div class="float-chip chip-2">CSS</div>
+            <div class="float-chip chip-3">Python</div>
+            <div class="float-chip chip-4">Java</div>
+            <div class="float-chip chip-5">C</div>
+            <div class="float-chip chip-6">C++</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrolling marquee -->
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <span>HTML</span><span>•</span>
+          <span>CSS</span><span>•</span>
+          <span>Python</span><span>•</span>
+          <span>Java</span><span>•</span>
+          <span>C</span><span>•</span>
+          <span>C++</span><span>•</span>
+          <!-- repeat -->
+          <span>HTML</span><span>•</span>
+          <span>CSS</span><span>•</span>
+          <span>Python</span><span>•</span>
+          <span>Java</span><span>•</span>
+          <span>C</span><span>•</span>
+          <span>C++</span><span>•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS TAB ===== -->
+    <section class="tab-section" id="tab-projects">
+      <div class="section-header">
+        <h2 class="section-title">My <span class="accent">Projects</span></h2>
+        <p class="section-sub">Things I've built that actually <span class="highlight">survived production</span> 🔥</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- FEATURED: PPT Generator -->
+        <div class="project-card featured" data-tilt>
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <div class="proj-icon">📊</div>
+            <div class="proj-badges">
+              <span class="proj-badge live">🟢 LIVE</span>
+              <span class="proj-badge featured-badge">⭐ FEATURED</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Unemployed Fellas</h3>
+          <p class="proj-sub">PPT Generator</p>
+          <p class="proj-desc">
+            The ultimate presentation generator for the hustlers. Zero PowerPoint skills? No problem.
+            Drop your topic, and watch it cook up slides that actually look professional. Built by
+            a diploma student who was tired of ugly presentations. 🎯
+          </p>
+          <div class="proj-tags">
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://unemployedfellas.vercel.app/" target="_blank" class="proj-link primary">
+              <span>🚀 Visit Live</span>
+            </a>
+            <div class="proj-stats">
+              <span>⚡ Fast</span>
+              <span>🆓 Free</span>
+            </div>
+          </div>
+          <div class="card-particles"></div>
+        </div>
+
+        <!-- Project 2: Swar -->
+        <div class="project-card" data-tilt>
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <div class="proj-icon">🧠</div>
+            <div class="proj-badges">
+              <span class="proj-badge live">🟢 LIVE</span>
+              <span class="proj-badge">🏆 SIH 2025</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Mind Care</h3>
+          <p class="proj-sub">Mental Health Web App — SIH 2025 Prototype</p>
+          <p class="proj-desc">
+            A prototype mental health care website built for Smart India Hackathon 2025.
+            Focused on accessible mental wellness resources with a clean, calming UI.
+            Built under hackathon pressure — still proud of it. 💪
+          </p>
+          <div class="proj-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SIH 2025</span>
+            <span class="tag">Prototype</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://swar-project1.vercel.app/" target="_blank" class="proj-link primary">
+              <span>🚀 Visit Live</span>
+            </a>
+          </div>
+          <div class="card-particles"></div>
+        </div>
+
+        <!-- Project 3: Jio Games Figma -->
+        <div class="project-card" data-tilt>
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <div class="proj-icon">🎮</div>
+            <div class="proj-badges">
+              <span class="proj-badge">🎨 Design</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Jio Games</h3>
+          <p class="proj-sub">UI/UX Design — Figma</p>
+          <p class="proj-desc">
+            A full UI/UX redesign of Jio Games created in Figma. Focused on clean
+            game-browsing experience with modern design language. Check the prototype! 🕹️
+          </p>
+          <div class="proj-tags">
+            <span class="tag">Figma</span>
+            <span class="tag">UI/UX</span>
+            <span class="tag">Prototyping</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://www.figma.com/design/TVZpCSkBOU2tsYDzV05874/Jio-Games?node-id=0-1&p=f&t=uyM2cJLrR64LPgdF-0"
+              target="_blank" class="proj-link primary">
+              <span>🎨 View Design</span>
+            </a>
+          </div>
+          <div class="card-particles"></div>
+        </div>
+
+        <!-- Project 4: Shubham Portfolio UI -->
+        <div class="project-card" data-tilt>
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <div class="proj-icon">🖌️</div>
+            <div class="proj-badges">
+              <span class="proj-badge live">🟢 LIVE</span>
+            </div>
+          </div>
+          <h3 class="proj-title">UI Showcase</h3>
+          <p class="proj-sub">Shubham Hegishte UI</p>
+          <p class="proj-desc">
+            A showcase of my UI design skills and creativity. Clean interfaces,
+            smooth interactions, and a whole lot of experimenting with what looks 🔥.
+          </p>
+          <div class="proj-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">UI Design</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://bit.ly/shubhamhegishteui" target="_blank" class="proj-link primary">
+              <span>🚀 Visit Live</span>
+            </a>
+          </div>
+          <div class="card-particles"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SKILLS TAB ===== -->
+    <section class="tab-section" id="tab-skills">
+      <div class="section-header">
+        <h2 class="section-title">My <span class="accent">Arsenal</span></h2>
+        <p class="section-sub">Tools of the trade — drop 'em and let physics decide ⚡</p>
+      </div>
+
+      <!-- Physics balls drop zone -->
+      <div class="skills-physics-zone" id="skillsPhysicsZone">
+        <canvas id="skillsCanvas"></canvas>
+        <div class="physics-hint">👇 Click to drop skill balls!</div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="cat-title">🌐 Web</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>HTML</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="60"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>CSS</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="60"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="cat-title">💻 Languages</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>Python</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="55"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>Java</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="50"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>C</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="55"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>C++</span><span class="skill-pct">Basics</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="50"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="cat-title">🛠️ Tools</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>Git &amp; GitHub</span><span class="skill-pct">Learning</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="50"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>VS Code</span><span class="skill-pct">Daily</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info"><span>Figma</span><span class="skill-pct">Learning</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="50"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT TAB ===== -->
+    <section class="tab-section" id="tab-about">
+      <div class="section-header">
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <p class="section-sub">The story of a nerd who codes at 3AM ☕</p>
+      </div>
+      <div class="about-layout">
+        <div class="about-card">
+          <div class="about-avatar">
+            <div class="about-avatar-inner">👨‍🎓</div>
+            <div class="about-badge-float">BE 2026</div>
+          </div>
+          <div class="about-text">
+            <p>
+              Hey! I'm <strong>Shubham Hegishte</strong>, a diploma CS student who fell into programming
+              and never looked back. I spend most of my time breaking things, fixing them,
+              then breaking them again in more creative ways.
+            </p>
+            <br />
+            <p>
+              I built <a href="https://unemployedfellas.vercel.app/" target="_blank" class="inline-link">Unemployed
+                Fellas</a> —
+              a PPT generator — because making presentations used to be the worst part of college.
+              Not anymore. 😂
+            </p>
+            <br />
+            <p>
+              When I'm not coding, I'm probably watching YouTube tutorials at 2×speed,
+              eating Maggi, or convincing myself that "just one more feature" before bed.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <h3 class="timeline-title">📍 My Journey</h3>
+          <div class="timeline-items">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2024</span>
+                <h4>Started as a Diploma Student</h4>
+                <p>Enrolled in Diploma CS. First "Hello World" hit different. The journey begins. 🚀</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2025</span>
+                <h4>Web Dev Basics</h4>
+                <p>Dived into HTML, CSS. Made my first webpage. It wasn't pretty, but it worked. 🌐</p>
+              </div>
+            </div>
+            <div class="tl-item active">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2026</span>
+                <h4>Programming Basics</h4>
+                <p>Picking up Python, Java, C, C++. Building logic, breaking it, fixing it. You're here! 👋</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT TAB ===== -->
+    <section class="tab-section" id="tab-contact">
+      <div class="section-header">
+        <h2 class="section-title">Say <span class="accent">Hello</span></h2>
+        <p class="section-sub">I don't bite. Usually. 🦷</p>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p class="contact-intro">
+            Got a project idea? Want to collab? Found a bug in my code?
+            Or just want to say hi? Slide into my inbox — I respond faster
+            than my college WiFi. (That last part is not guaranteed.)
+          </p>
+          <div class="contact-links">
+            <a href="mailto:shubhamhegishte16@gmail.com" class="contact-link">
+              <div class="cl-icon">📧</div>
+              <div class="cl-info">
+                <span class="cl-label">Email</span>
+                <span class="cl-val">shubhamhegishte16@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+917420941730" class="contact-link">
+              <div class="cl-icon">📞</div>
+              <div class="cl-info">
+                <span class="cl-label">Phone</span>
+                <span class="cl-val">+91 7420941730</span>
+              </div>
+            </a>
+            <a href="https://github.com/shubhamhegishte16" target="_blank" class="contact-link">
+              <div class="cl-icon">🐙</div>
+              <div class="cl-info">
+                <span class="cl-label">GitHub</span>
+                <span class="cl-val">github.com/shubhamhegishte16</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/shubhamhegishte16/" target="_blank" class="contact-link">
+              <div class="cl-icon">💼</div>
+              <div class="cl-info">
+                <span class="cl-label">LinkedIn</span>
+                <span class="cl-val">linkedin.com/in/shubhamhegishte16</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your awesome name" required />
+              <div class="input-line"></div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" required />
+              <div class="input-line"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="What's up?" required />
+            <div class="input-line"></div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me everything..." required></textarea>
+            <div class="input-line"></div>
+          </div>
+          <button type="submit" class="btn-primary submit-btn">
+            <span class="btn-text">Send Message 🚀</span>
+            <div class="btn-glow"></div>
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✅ Message sent! I'll reply soon (probably after Maggi).
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Built with <span class="heart">❤️</span> + <span class="coffee">☕</span> + <span class="sleep">😴</span> by
+      <strong>Shubham</strong> | Diploma Student 2026
+    </p>
+    <p class="footer-sub">Made with HTML, CSS, JS, Three.js, GSAP, Matter.js — because why use one technology when you
+      can use all of them?</p>
+  </footer>
+
+  <!-- JS Files -->
+  <script src="js/cursor.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
