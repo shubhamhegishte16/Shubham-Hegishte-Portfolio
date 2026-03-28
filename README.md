@@ -33,7 +33,7 @@ Welcome to my digital playground! This is a high-performance, interactive portfo
 The ultimate **PPT Generator** for students. Zero PowerPoint skills? No problem. Watch it cook up professional slides in seconds.
 -   **Tech**: React, Next.js, Vercel.
 
-### [🧠 Mind Care](https://swar-project1.vercel.app/)
+### [🧠 Mind Care](https://sih-website-umber.vercel.app/)
 A mental health wellness prototype built for **Smart India Hackathon 2025**. Focused on accessible resources and a calming UI.
 
 ### [🎮 Jio Games Redesign](https://www.figma.com/design/TVZpCSkBOU2tsYDzV05874/Jio-Games)
@@ -54,5 +54,29 @@ A full UI/UX overhaul of the Jio Games platform, designed in Figma for an enhanc
 
 ---
 
-Built with ❤️ by **Shubham** 
+## 🚀 How to Run Locally
+
+Since this project uses modern JavaScript features and loads assets via relative paths, it's best to run it through a local server to avoid CORS issues.
+
+### Method 1: Python (Easiest)
+If you have Python installed, run this in your terminal:
+```bash
+python -m http.server 8000
+```
+Then open `http://localhost:8000` in your browser.
+
+### Method 2: Node.js (Best for Dev)
+If you have Node.js, you can use `npx`:
+```bash
+npx serve .
+```
+
+### Method 3: VS Code "Live Server"
+1. Open the folder in VS Code.
+2. Install the **Live Server** extension.
+3. Click **Go Live** at the bottom right.
+
+---
+
+Built with ❤️ by **Shubham** | © 2026
 
