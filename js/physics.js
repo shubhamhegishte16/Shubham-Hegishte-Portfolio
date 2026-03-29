@@ -16,13 +16,10 @@
         { label: 'HTML', color: '#e34c26' },
         { label: 'CSS', color: '#264de4' },
         { label: 'JS', color: '#f0db4f' },
-        { label: 'React', color: '#61dafb' },
+        { label: 'C', color: '#b1b1b1' },
+        { label: 'C++', color: '#00599c' },
+        { label: 'Java', color: '#b07219' },
         { label: 'Python', color: '#3776ab' },
-        { label: 'Node', color: '#68a063' },
-        { label: '3D', color: '#a855f7' },
-        { label: 'GSAP', color: '#88ce02' },
-        { label: 'Git', color: '#f05033' },
-        { label: 'API', color: '#22d3ee' },
     ];
 
     function initPhysics() {
